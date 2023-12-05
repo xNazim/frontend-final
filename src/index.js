@@ -1,14 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.scss";
 import App from "./App";
-import reportWebVitals from "./reportWebVitals";
+import CssBaseline from "@mui/material/CssBaseline";
+
+import "./index.scss";
+import { ThemeProvider } from "@mui/material";
+import { theme } from "./theme";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <CssBaseline />
+    <ThemeProvider theme={theme}>
+      <App />
+    </ThemeProvider>
   </React.StrictMode>
 );
-
-reportWebVitals();
