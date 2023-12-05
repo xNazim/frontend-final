@@ -1,3 +1,13 @@
+import { Container } from "@mui/material";
+import styles from "./Home.module.scss";
+import { Rools } from "../../components/Rools";
+
 export const Home = () => {
-    return <></>;
+    return (
+        <>
+            <Container>
+                <Rools />
+            </Container>
+        </>
+    );
 };

@@ -4,11 +4,28 @@ import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import styles from "./Header.module.scss";
 import Container from "@mui/material/Container";
+import { Link } from "react-router-dom";
+
+import MenuItem from "@mui/material/MenuItem";
+import Menu from "@mui/material/Menu";
+import IconButton from "@mui/material/IconButton";
+import AccountCircle from "@mui/icons-material/AccountCircle";
 
 export const Header = () => {
-    const isAuth = true;
+    const [auth, setAuth] = React.useState(true);
+    const [anchorEl, setAnchorEl] = React.useState(null);
 
-    const onClickLogout = () => {};
+    const handleChange = (event) => {
+        setAuth(event.target.checked);
+    };
+
+    const handleMenu = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
 
     return (
         <AppBar position="static">
@@ -18,31 +35,46 @@ export const Header = () => {
                         <div>Toguz Korgool</div>
                     </a>
                     <div className={styles.buttons}>
-                        {isAuth ? (
+                        {auth ? (
                             <>
-                                <a href="/games/create">
-                                    <Button variant="contained">
-                                        Создать игру
-                                    </Button>
-                                </a>
-                                <Button
-                                    onClick={onClickLogout}
-                                    variant="contained"
-                                    color="error"
+                                <IconButton
+                                    size="large"
+                                    aria-label="account of current user"
+                                    aria-controls="menu-appbar"
+                                    aria-haspopup="true"
+                                    onClick={handleMenu}
+                                    color="inherit"
                                 >
-                                    Выйти
-                                </Button>
+                                    <AccountCircle />
+                                </IconButton>
+                                <Menu
+                                    id="menu-appbar"
+                                    anchorEl={anchorEl}
+                                    anchorOrigin={{
+                                        vertical: "top",
+                                        horizontal: "right",
+                                    }}
+                                    keepMounted
+                                    transformOrigin={{
+                                        vertical: "top",
+                                        horizontal: "right",
+                                    }}
+                                    open={Boolean(anchorEl)}
+                                    onClose={handleClose}
+                                >
+                                    <MenuItem onClick={handleClose}>
+                                        Profile
+                                    </MenuItem>
+                                    <MenuItem onClick={handleClose}>
+                                        Logout
+                                    </MenuItem>
+                                </Menu>
                             </>
                         ) : (
                             <>
-                                <a href="/login">
+                                <Link to="/login">
                                     <Button variant="outlined">Войти</Button>
-                                </a>
-                                <a href="/register">
-                                    <Button variant="contained">
-                                        Создать аккаунт
-                                    </Button>
-                                </a>
+                                </Link>
                             </>
                         )}
                     </div>
