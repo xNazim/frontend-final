@@ -1,13 +1,12 @@
-import { Container } from "@mui/material";
 import { Header, Board } from "../../components/Game";
+
+import styles from "./Game.module.scss";
 
 export const Game = () => {
     return (
-        <>
-            <Container>
-                <Header />
-                <Board />
-            </Container>
-        </>
+        <div className={styles.inner}>
+            <Header />
+            <Board />
+        </div>
     );
 };

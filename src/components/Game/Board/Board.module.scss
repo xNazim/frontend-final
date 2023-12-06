@@ -1,0 +1,58 @@
+.board {
+    background: #061c2f;
+}
+
+.inner {
+    padding: 20px;
+}
+
+.kazan {
+    position: relative;
+    margin: 10px;
+    display: grid;
+    grid-template-columns: 6% 94%;
+    column-gap: 20px;
+
+    &__counter {
+        font-size: 24px;
+        font-weight: bold;
+        background-color: rgba(255, 255, 255, 0.6);
+        padding: 10px;
+        border-radius: 30px;
+        text-align: center;
+    }
+    &__list {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        column-gap: 10px;
+        flex-wrap: wrap;
+        background: #2b2e4a;
+        padding: 10px;
+        border-radius: 20px;
+    }
+}
+
+.spot {
+    width: 22px;
+    height: 22px;
+    background: red;
+    border-radius: 50%;
+    align-self: center;
+    justify-self: center;
+}
+
+.player {
+    display: flex;
+    justify-content: center;
+}
+
+.pit {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: relative;
+    width: 100px;
+    height: 200px;
+    margin: 5px;
+    background: black;
+}

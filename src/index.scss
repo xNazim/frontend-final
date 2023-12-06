@@ -3,5 +3,9 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, "Roboto";
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    background-color: #181818 !important;
+    background-image: url("./images/toguz.jpg");
+    background-size: cover;
+    background-position: center center; /* Center both horizontally and vertically */
+    background-repeat: no-repeat;
+    height: 100vh;
 }
