@@ -1,20 +1,18 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import Container from "@mui/material/Container";
+import { Route, Routes } from "react-router-dom";
 
-import { fetchAuthMe } from "./redux/slices/auth";
-
-import { Routes } from "./routes";
+import { Home, Game } from "./pages";
 
 function App() {
-    const dispatch = useDispatch();
-
-    React.useEffect(() => {
-        dispatch(fetchAuthMe());
-    }, []);
-
     return (
         <>
-            <Routes isAuthorized={true} />
+            <Container maxWidth="lg">
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/game" element={<Game />} />
+                </Routes>
+            </Container>
         </>
     );
 }

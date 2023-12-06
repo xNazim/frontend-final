@@ -1,0 +1,31 @@
+.inner {
+    padding-top: 40px;
+    color: #fff;
+    text-align: center;
+}
+
+.list {
+    display: flex;
+    flex-flow: column;
+    row-gap: 20px;
+    list-style: none;
+    padding: 0;
+
+    a {
+        display: inline-block;
+        font-size: 21px;
+        font-weight: 600;
+        text-decoration: none;
+        color: inherit;
+
+        &:hover {
+            opacity: 0.6;
+        }
+    }
+}
+
+.title {
+    font-weight: 600;
+    text-transform: uppercase;
+    color: cornflowerblue;
+}
