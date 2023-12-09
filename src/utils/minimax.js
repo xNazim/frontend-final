@@ -1,4 +1,4 @@
-import { K, N } from "../constants/game";
+import { PITS_COUNT, BALLS_COUNT } from "constants/game";
 
 export function minimaxWithAB(
     board,
@@ -9,7 +9,11 @@ export function minimaxWithAB(
     pointers,
     isAtsyrau = false,
 ) {
-    if (depth === 0 || board.kaznas[0] > K * N || board.kaznas[1] > K * N) {
+    if (
+        depth === 0 ||
+        board.kaznas[0] > PITS_COUNT * BALLS_COUNT ||
+        board.kaznas[1] > PITS_COUNT * BALLS_COUNT
+    ) {
         pointers.move = -1;
         return board.kaznas[0];
     }
@@ -36,7 +40,11 @@ export function minimaxWithAB(
             true,
         );
     }
-    for (let i = player * K; i < player * K + K; i++) {
+    for (
+        let i = player * PITS_COUNT;
+        i < player * PITS_COUNT + PITS_COUNT;
+        i++
+    ) {
         let localBoard = board.clone();
         if (localBoard.sockets[i] === 0) {
             continue;

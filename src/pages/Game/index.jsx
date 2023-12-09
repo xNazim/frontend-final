@@ -1,4 +1,4 @@
-import { Header, Board } from "../../components/Game";
+import { Header, Board } from "components/Game";
 
 import styles from "./Game.module.scss";
 

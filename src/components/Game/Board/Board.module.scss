@@ -45,14 +45,19 @@
 .player {
     display: flex;
     justify-content: center;
+
+    &:first-child {
+        flex-flow: row-reverse;
+    }
 }
 
 .pit {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    row-gap: 10px;
     position: relative;
     width: 100px;
-    height: 200px;
+    min-height: 200px;
     margin: 5px;
     background: black;
 }

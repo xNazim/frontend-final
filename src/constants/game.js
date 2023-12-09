@@ -1,2 +1,2 @@
-export const K = 9; // pits
-export const N = K; // balls per pit
+export const PITS_COUNT = 9; // pits
+export const BALLS_COUNT = PITS_COUNT; // balls per pit

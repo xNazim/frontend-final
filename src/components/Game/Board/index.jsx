@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import Kazan from "./Kazan";
 
-import { K as pitsCount, N as ballsCount } from "../../../constants/game";
-import { withAB } from "../../../utils/minimax";
-import BoardManager from "../../../utils/BoardManager";
+import { PITS_COUNT, BALLS_COUNT } from "constants/game";
+import { withAB } from "utils/minimax";
+import BoardManager from "utils/BoardManager";
 
 import styles from "./Board.module.scss";
 import Pit from "./Pit";
@@ -12,14 +12,14 @@ const makeComputerMove = (gameBoard, depth = 7) => {
     const board = gameBoard.clone();
     const computer = 1;
     const abResult = withAB(board, depth, computer);
-    board.pli(pitsCount + abResult[0], abResult[1], computer);
+    board.pli(PITS_COUNT + abResult[0], abResult[1], computer);
     return board;
 };
 
 const isGameOver = (gameBoard) => {
     return (
-        gameBoard.kaznas[0] >= ballsCount * pitsCount ||
-        gameBoard.kaznas[1] >= ballsCount * pitsCount
+        gameBoard.kaznas[0] >= BALLS_COUNT * PITS_COUNT ||
+        gameBoard.kaznas[1] >= BALLS_COUNT * PITS_COUNT
     );
 };
 
@@ -36,7 +36,7 @@ export const Board = () => {
             return;
         }
 
-        if (pitId < 0 || pitId >= pitsCount) {
+        if (pitId < 0 || pitId >= PITS_COUNT) {
             alert("Now not your turn!");
             return;
         }
@@ -45,7 +45,11 @@ export const Board = () => {
         const updatedBoard = gameBoard.clone();
         updatedBoard.pli(pitId, false, player1);
 
-        setGameBoard(makeComputerMove(updatedBoard));
+        setGameBoard(updatedBoard);
+
+        setTimeout(() => {
+            setGameBoard(makeComputerMove(updatedBoard));
+        }, 1000);
     };
 
     return (
@@ -53,12 +57,12 @@ export const Board = () => {
             <div className={styles.inner}>
                 <div className={styles.player}>
                     {gameBoard.sockets
-                        .slice(pitsCount, 2 * pitsCount)
+                        .slice(PITS_COUNT, 2 * PITS_COUNT)
                         .map((count, idx) => (
                             <Pit
                                 key={idx}
                                 count={count}
-                                idx={idx + pitsCount}
+                                idx={idx + PITS_COUNT}
                                 onClick={handlePitClick}
                             />
                         ))}
@@ -66,14 +70,16 @@ export const Board = () => {
                 <Kazan count={gameBoard.kaznas[1]} />
                 <Kazan count={gameBoard.kaznas[0]} />
                 <div className={styles.player}>
-                    {gameBoard.sockets.slice(0, pitsCount).map((count, idx) => (
-                        <Pit
-                            key={idx}
-                            count={count}
-                            idx={idx}
-                            onClick={handlePitClick}
-                        />
-                    ))}
+                    {gameBoard.sockets
+                        .slice(0, PITS_COUNT)
+                        .map((count, idx) => (
+                            <Pit
+                                key={idx}
+                                count={count}
+                                idx={idx}
+                                onClick={handlePitClick}
+                            />
+                        ))}
                 </div>
             </div>
         </div>

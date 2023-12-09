@@ -1,18 +1,10 @@
-import { K, N } from "../constants/game";
+import { PITS_COUNT, BALLS_COUNT } from "constants/game";
 
 export default class Board {
     constructor() {
-        this.sockets = new Array(2 * K).fill(N);
+        this.sockets = new Array(2 * PITS_COUNT).fill(BALLS_COUNT);
         this.tuzdeks = [-1, -1];
         this.kaznas = [0, 0];
-    }
-
-    getSumOfOtausOfPlayer(p) {
-        let sum = 0;
-        for (let i = p * K; i < K * (1 + p); ++i) {
-            sum += this.kaznas[i];
-        }
-        return sum;
     }
 
     playSocket(p) {
@@ -32,7 +24,7 @@ export default class Board {
     }
 
     isMovePossible(p) {
-        for (let i = p * K; i < K * (1 + p); ++i) {
+        for (let i = p * PITS_COUNT; i < PITS_COUNT * (1 + p); ++i) {
             if (this.sockets[i] !== 0) {
                 return true;
             }
@@ -41,7 +33,7 @@ export default class Board {
     }
 
     atsyrauFunction(p) {
-        for (let i = p * K; i < K * (1 + p); ++i) {
+        for (let i = p * PITS_COUNT; i < PITS_COUNT * (1 + p); ++i) {
             this.kaznas[p] += this.sockets[i];
             this.sockets[i] = 0;
         }
@@ -51,16 +43,19 @@ export default class Board {
     tuzdekPossible(s, player) {
         return (
             this.sockets[s] === 3 &&
-            Math.floor(s / K) === 1 - player &&
-            (s + 1) % K !== 0 &&
+            Math.floor(s / PITS_COUNT) === 1 - player &&
+            (s + 1) % PITS_COUNT !== 0 &&
             this.tuzdeks[player] === -1 &&
             (this.tuzdeks[1 - player] === -1 ||
-                this.tuzdeks[1 - player] % K !== s % K)
+                this.tuzdeks[1 - player] % PITS_COUNT !== s % PITS_COUNT)
         );
     }
 
     accountSocket(s, player) {
-        if (Math.floor(s / K) === 1 - player && this.sockets[s] % 2 === 0) {
+        if (
+            Math.floor(s / PITS_COUNT) === 1 - player &&
+            this.sockets[s] % 2 === 0
+        ) {
             this.kaznas[player] += this.sockets[s];
             this.sockets[s] = 0;
         }
@@ -89,36 +84,15 @@ export default class Board {
         result.tuzdeks[0] = this.tuzdeks[1];
         result.tuzdeks[1] = this.tuzdeks[0];
 
-        for (let i = 0; i < K; ++i) {
-            result.sockets[i] = this.sockets[K + i];
-            result.sockets[K + i] = this.sockets[i];
+        for (let i = 0; i < PITS_COUNT; ++i) {
+            result.sockets[i] = this.sockets[PITS_COUNT + i];
+            result.sockets[PITS_COUNT + i] = this.sockets[i];
         }
         return result;
     }
 
     idx(s) {
-        return s % (2 * K);
-    }
-
-    toString() {
-        let output = "";
-        for (let player = 1; player >= 0; --player) {
-            output += player + ":\t";
-            for (let i = 0; i < K; ++i) {
-                let idx = player ? 2 * K - i - 1 : i;
-                output += " " + this.sockets[idx];
-                if (this.tuzdeks[1 - player] === idx) {
-                    output += "*";
-                }
-                output += "\t";
-            }
-            output += "Kazna: " + this.kaznas[player] + "\n\t";
-        }
-        output += "\t";
-        for (let i = 0; i < K; ++i) {
-            output += "-" + (i + 1) + "-\t";
-        }
-        return output;
+        return s % (2 * PITS_COUNT);
     }
 
     clone() {
