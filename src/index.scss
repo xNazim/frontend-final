@@ -9,3 +9,11 @@ body {
     background-repeat: no-repeat;
     height: 100vh;
 }
+
+.main {
+    padding: 20px;
+
+    &__inner {
+        margin-top: 20px;
+    }
+}

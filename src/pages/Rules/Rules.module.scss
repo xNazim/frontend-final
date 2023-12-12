@@ -1,0 +1,20 @@
+.rules {
+    background: #fff;
+    padding: 10px;
+
+    &__header {
+        padding: 5px 10px;
+        background-color: #e5ecf9;
+        color: #3f3faa;
+        font-weight: bold;
+        h4 {
+            margin: 0;
+        }
+    }
+    &__content {
+        padding: 0 20px;
+    }
+    &__img {
+        text-align: center;
+    }
+}
