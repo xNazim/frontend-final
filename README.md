@@ -48,7 +48,7 @@ This application is configured for deployment using GitHub Actions and AWS servi
 - **Upload App to S3 Bucket:** Syncs the build files with the specified S3 bucket.
 - **Create CloudFront Cache Invalidation:** Invalidates the CloudFront cache to ensure the latest version of the application is served to users.
 
-The deployment workflow can be triggered manually using the GitHub Actions workflow_dispatch event or automatically upon pushing changes to the `master` branch.
+The deployment workflow can be triggered manually using the GitHub Actions workflow_dispatch event or automatically upon pushing changes to the `main` branch.
 
 ## License
 
