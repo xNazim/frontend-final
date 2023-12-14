@@ -11,10 +11,10 @@ function App() {
         <div className="main">
             <Container maxWidth="lg">
                 <div className="main__header">
-                    <SimpleBreadcrumbs />
                     <div className="main__logo">
                         <img src={logo} alt="logo" />
                     </div>
+                    <SimpleBreadcrumbs />
                 </div>
                 <div className="main__inner">
                     <Routes>

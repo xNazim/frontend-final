@@ -19,7 +19,7 @@ body {
     &__header {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        column-gap: 20px;
     }
     &__logo {
         width: 64px;
