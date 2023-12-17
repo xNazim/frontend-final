@@ -5,10 +5,9 @@ Toguz Korgool – Traditional Kyrgyz intellectual game.
 Toguz Korgool belongs to the mancala family, whose name derives from the word “move” or “movement”.
 This project is the representation Toguz Korgool game, user will play Toguz Korgool with computer. For more information or rules of the game refer to this website [ToguzKorgool](http://worldnomadgames.com/en/sport/Toguz-korgool/)
 
-# Video Tutorial how to deploy Frontend Application to AWS with SSL and CDN service
-### [Video](https://youtu.be/wTHdE56UgWQ)
+###  [Video Tutorial how to deploy Frontend Application to AWS with SSL and CDN service](https://youtu.be/wTHdE56UgWQ)
 
-Here are some screenshots:
+## Here are some screenshots:
 
 ![Alt text](/screenshots/front1.png?raw=true)
 ![Alt text](/screenshots/front2.png?raw=true)
